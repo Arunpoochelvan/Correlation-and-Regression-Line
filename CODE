@@ -1,0 +1,20 @@
+import operator
+
+phy = (15,12,8,8,7,7,7,6,5,3)
+his = (10,25,17,11,13,17,20,13,9,15)
+
+phy_mean = sum(phy)/len(phy)
+his_mean = sum(his)/len(his)
+
+top1 = list(map(lambda x: x - phy_mean, phy))
+top2 = list(map(lambda x: x - his_mean, his))
+
+top3 = sum(list(map(operator.mul, top1, top2)))
+
+bottom1 =   (sum(list(map(operator.mul, top1, top1))))**(0.5)
+bottom2 =   (sum(list(map(operator.mul, top2, top2))))**(0.5)
+bottom3 = bottom1*bottom2
+
+Correlation = top3/bottom3
+
+print(round(Correlation,3))
